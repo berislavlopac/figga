@@ -2,7 +2,7 @@ import os
 from pathlib import Path
 from inspect import isclass
 from configparser import ConfigParser, DEFAULTSECT
-from typing import ItemsView, Union
+from typing import Sequence, ItemsView, Union
 
 
 class Configuration:
@@ -14,9 +14,10 @@ class Configuration:
     def __getattr__(self, item: str):
         return self.get(item)
 
-    def get(self, item: str, default='UNLIKELY default VALUE'):
-        if default == 'UNLIKELY default VALUE':
-            default = self._default
+    def get(self, item: str, **kwargs):
+        """ Retrieves a single configuration value.
+        """
+        default = kwargs.get('default', self._default)
         value = self._config.get(item.lower(), default)
         if isclass(value) and issubclass(value, BaseException):
             raise value(f"{item} is not defined")
@@ -25,10 +26,17 @@ class Configuration:
         return value
 
     def items(self) -> ItemsView:
+        """ Returns a dict containing all configuration values.
+        """
         return self._config.items()
 
     @classmethod
-    def from_environ(cls, prefix: str, remove_prefix: bool=False, default=None) -> 'Configuration':
+    def from_environ(cls, prefix: str, remove_prefix: bool=False,
+                     default=None) -> 'Configuration':
+        """ Constructs a Configuration instance from a set of environment
+            valiables sharing the same prefix. Optionally, the prefix can
+            be removed from the configuration values.
+        """
         prefix_length = len(prefix)
         config = {
             key[prefix_length:] if remove_prefix else key: value
@@ -37,7 +45,10 @@ class Configuration:
         return cls(config, default=default)
 
     @classmethod
-    def from_files(cls, *files: Union[str, os.PathLike], section: str=DEFAULTSECT, default=None) -> 'Configuration':
+    def from_files(cls, files: Sequence[Union[str, os.PathLike]],
+                   section: str=DEFAULTSECT, default=None) -> 'Configuration':
+        """ Constructs a Configuration instance from one or more INI files.
+        """
         config = ConfigParser(default_section=section)
         for file_path in files:
             file_path = Path(file_path)
@@ -49,3 +60,10 @@ class Configuration:
             key: value for key, value in config[section].items()
         }
         return cls(config, default=default)
+
+    @classmethod
+    def from_file(cls, file: Union[str, os.PathLike],
+                  section: str=DEFAULTSECT, default=None) -> 'Configuration':
+        """ Constructs a Configuration instance from a single INI file.
+        """
+        return cls.from_files([file], section=section, default=default)
