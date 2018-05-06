@@ -2,6 +2,8 @@
 
 A very simple configuration manager for Python.
 
+[![Travis CI build](https://www.travis-ci.org/berislavlopac/fig.svg?branch=master)](https://www.travis-ci.org/berislavlopac/fig)
+
 
 ## Usage
 

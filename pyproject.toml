@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "fig"
+version = "0.1.0"
+description = "Python configuration management library."
+authors = ["Berislav Lopac <berislav@lopac.net>"]
+readme = 'README.md'
+repository = "https://github.com/berislavlopac/fig"
+homepage = "https://github.com/berislavlopac/fig"
+keywords = ["configuration", "config"]
+license = "MIT"
+
+[tool.poetry.dependencies]
+python = "^3.6"
+
+[tool.poetry.dev-dependencies]
+pytest = "^3.5"

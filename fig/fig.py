@@ -20,7 +20,7 @@ class Configuration:
         default = kwargs.get('default', self._default)
         value = self._config.get(item.lower(), default)
         if isclass(value) and issubclass(value, BaseException):
-            raise value(f"{item} is not defined")
+            raise value(f'{item} is not defined')
         if callable(value):
             return value(item)
         return value
@@ -34,7 +34,7 @@ class Configuration:
     def from_environ(cls, prefix: str, remove_prefix: bool=False,
                      default=None) -> 'Configuration':
         """ Constructs a Configuration instance from a set of environment
-            valiables sharing the same prefix. Optionally, the prefix can
+            variables sharing the same prefix. Optionally, the prefix can
             be removed from the configuration values.
         """
         prefix_length = len(prefix)
