@@ -6,7 +6,7 @@ with open('README.md') as readme:
 
 setup(
     name="figga",
-    version="0.1.1",
+    version="0.1.2",
     description="A simple configuration manager for Python.",
     long_description=long_desc,
     author="Berislav Lopac",
