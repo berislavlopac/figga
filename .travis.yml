@@ -4,7 +4,7 @@ python:
   - "3.6"
   - "3.7-dev"
 env:
-  - PYTHONPATH=fig/
+  - PYTHONPATH=figga/
 before_install: pip install poetry
 install: poetry install
 script: pytest -v

@@ -1,13 +1,13 @@
-# fig
+# figga
 
 A very simple configuration manager for Python.
 
-[![Travis CI build](https://www.travis-ci.org/berislavlopac/fig.svg?branch=master)](https://www.travis-ci.org/berislavlopac/fig)
+[![Travis CI build](https://www.travis-ci.org/berislavlopac/figga.svg?branch=master)](https://www.travis-ci.org/berislavlopac/figga)
 
 
 ## Usage
 
-`fig` currently supports three ways of specifying the configuration:
+`figga` currently supports three ways of specifying the configuration:
 
 * standard Python dictionary
 * environment variables with a common prefix
@@ -16,16 +16,16 @@ A very simple configuration manager for Python.
 
 ### Basic Usage
 
-The default mechanism of instantiating a `fig.Configuration` instance is passing a simple Python dictionary:
+The default mechanism of instantiating a `figga.Configuration` instance is passing a simple Python dictionary:
 
-    from fig import Configuration
+    from figga import Configuration
 
     config = Configuration({'foo': 'bar', 'var1': 123, 'VAR2': 'buzz'})
 
 This mechanism can be easily used to store configuration in any file format which can easily be converted to a `dict`, such as JSON or YAML:
 
     import json
-    from fig import Configuration
+    from figga import Configuration
 
     with open('config.json') as json_config:
         config = Configuration(json.load(json_config))
@@ -61,7 +61,7 @@ If no default value is specified, an unknown variable will have the value of `No
 Another option to initialize the configuration manager is by taking the values of all the environment variables which begin with a common prefix:
 
     import os
-    from fig import Configuration
+    from figga import Configuration
 
     os.environ['YOURAPP_VARIABLE'] = 'foo bar'
 
@@ -78,9 +78,9 @@ Optionally you can remove the prefix from the final configuration variables:
 
 ### From INI Files
 
-Alternatively, `fig.Configuration` can be instantiated using one or more [configparser](https://docs.python.org/3/library/configparser.html)-compatible files:
+Alternatively, `figga.Configuration` can be instantiated using one or more [configparser](https://docs.python.org/3/library/configparser.html)-compatible files:
 
-    from fig import Configuration
+    from figga import Configuration
 
     config = Configuration.from_files('config1.ini', '/vars/config2.ini')
 

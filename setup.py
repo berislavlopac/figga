@@ -5,13 +5,12 @@ with open('README.md') as readme:
     long_desc = readme.read()
 
 setup(
-    name="fig",
+    name="figga",
     version="0.1.0dev",
     description="A simple configuration manager for Python.",
     long_description=long_desc,
     author="Berislav Lopac",
-    url="https://github.com/berislavlopac/fig",
-    package_dir={'': 'src'},
-    py_modules=["fig"],
+    url="https://github.com/berislavlopac/figga",
+    package_dir={'': 'figga'},
     python_requires=">=3.6",
 )

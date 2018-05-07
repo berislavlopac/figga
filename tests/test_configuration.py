@@ -1,6 +1,6 @@
 import pytest
 
-from fig import Configuration
+from figga import Configuration
 
 
 @pytest.fixture
