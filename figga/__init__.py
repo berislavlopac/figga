@@ -58,8 +58,8 @@ class Configuration:
                 file_path = Path.cwd() / file_path
             if file_path.exists():
                 config.read(file_path)
-        config = {key: value for key, value in config[section].items()}
-        return cls(config, default=default)
+        config_dict = {key: value for key, value in config[section].items()}
+        return cls(config_dict, default=default)
 
     @classmethod
     def from_file(
