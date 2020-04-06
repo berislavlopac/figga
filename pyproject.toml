@@ -10,7 +10,7 @@ keywords = ["configuration", "config"]
 license = "MIT"
 
 [tool.poetry.dependencies]
-python = "^3.6"
+python = "^3.7"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5"
@@ -20,6 +20,6 @@ pytest-mypy = "^0.6.1"
 
 [tool.black]
 line-length = 100
-target-version = ['py38']
+target-version = ['py37', 'py38']
 verbose = true
 skip-string-normalization = false
