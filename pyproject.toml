@@ -13,4 +13,12 @@ license = "MIT"
 python = "^3.6"
 
 [tool.poetry.dev-dependencies]
-pytest = "^3.5"
+pytest = "^5"
+pytest-cov = "^2.8.1"
+pytest-flake8 = "^1.0.4"
+
+[tool.black]
+line-length = 100
+target-version = ['py38']
+verbose = true
+skip-string-normalization = false
