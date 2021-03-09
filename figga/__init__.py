@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import os
 from configparser import ConfigParser, DEFAULTSECT
 from inspect import isclass
@@ -31,8 +33,8 @@ class Configuration:
 
     @classmethod
     def from_environ(
-        cls, prefix: str, remove_prefix: bool = False, default=None
-    ) -> "Configuration":
+            cls, prefix: str, remove_prefix: bool = False, default=None
+    ) -> Configuration:
         """ Constructs a Configuration instance from a set of environment
             variables sharing the same prefix. Optionally, the prefix can
             be removed from the configuration values.
@@ -47,8 +49,8 @@ class Configuration:
 
     @classmethod
     def from_files(
-        cls, *files: Union[str, os.PathLike], section: str = DEFAULTSECT, default=None
-    ) -> "Configuration":
+            cls, *files: Union[str, os.PathLike], section: str = DEFAULTSECT, default=None
+    ) -> Configuration:
         """ Constructs a Configuration instance from one or more INI files.
         """
         config = ConfigParser(default_section=section)
@@ -63,8 +65,8 @@ class Configuration:
 
     @classmethod
     def from_file(
-        cls, file: Union[str, os.PathLike], section: str = DEFAULTSECT, default=None
-    ) -> "Configuration":
+            cls, file: Union[str, os.PathLike], section: str = DEFAULTSECT, default=None
+    ) -> Configuration:
         """ Constructs a Configuration instance from a single INI file.
         """
         return cls.from_files(file, section=section, default=default)
