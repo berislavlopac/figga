@@ -18,6 +18,7 @@ pytest-cov = "^2.8.1"
 pytest-flake8 = "^1.0.4"
 pytest-mypy = "^0.6.1"
 coverage = {extras = ["toml"], version = "^5.0.4"}
+tox = "^3.23.0"
 
 [tool.black]
 line-length = 100
@@ -26,10 +27,14 @@ verbose = true
 skip-string-normalization = false
 
 [tool.coverage.run]
-source = [ "src/" ]
+source = [ "figga/" ]
 omit = [ "*/tests/*" ]
 
 [tool.coverage.report]
 skip_covered = true
 show_missing = true
 fail_under = 90
+
+[build-system]
+requires = ["poetry>=1.0"]
+build-backend = "poetry.masonry.api"
