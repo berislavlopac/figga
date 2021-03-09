@@ -2,7 +2,7 @@
 
 A very simple configuration manager for Python.
 
-[![Travis CI build](https://www.travis-ci.org/berislavlopac/figga.svg?branch=master)](https://www.travis-ci.org/berislavlopac/figga)
+[![CI builds](https://b11c.semaphoreci.com/badges/figga.svg?style=shields)](https://b11c.semaphoreci.com/projects/figga)
 
 
 ## Usage
