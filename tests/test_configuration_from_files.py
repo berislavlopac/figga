@@ -11,6 +11,14 @@ def test_from_file():
     assert config.i_dont_exist is None
 
 
+def test_from_relative_file():
+    config_file = "tests/config_example_1.ini"
+    config = Configuration.from_file(config_file)
+    assert config.ServerAliveInterval == "45"
+    assert config.ForwardX11 == "yes"
+    assert config.i_dont_exist is None
+
+
 def test_from_files():
     config_root = Path(__file__).parent
     config = Configuration.from_files(
