@@ -50,7 +50,8 @@ def test_items(config_dict):
         ("serveraliveinterval", 45),
         ("forwardx11", "yes"),
     ]
-    assert sorted(config.items()) == sorted(expected)
+    assert sorted(config) == sorted(expected)
+    assert dict(iter(config)) == dict(expected)
 
 
 def test_get(config_dict):

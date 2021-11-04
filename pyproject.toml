@@ -19,11 +19,15 @@ pytest-flake8 = "^1.0.4"
 pytest-mypy = "^0.6.1"
 coverage = {extras = ["toml"], version = "^5.0.4"}
 tox = "^3.23.0"
+mypy = "^0.910"
+black = "^21.10b0"
+pydocstyle = "^6.1.1"
+toml = "^0.10.2"
 
 [tool.black]
-line-length = 100
-target-version = ["py37", "py38"]
-verbose = true
+line-length = 96
+target-version = ['py37', 'py38', 'py39']
+verbose = false
 skip-string-normalization = false
 
 [tool.coverage.run]
@@ -31,9 +35,18 @@ source = [ "figga/" ]
 omit = [ "*/tests/*" ]
 
 [tool.coverage.report]
-skip_covered = true
 show_missing = true
 fail_under = 90
+exclude_lines = [ "pragma: no cover", "@abstract",]
+
+[tool.pydocstyle]
+add-ignore = "D104, D105, D107, D212, D401"
+convention = "google"
+match-dir = "^(?!tests).*"
+
+[tool.mypy]
+mypy_path = "figga/"
+ignore_missing_imports = true
 
 [build-system]
 requires = ["poetry>=1.0"]
